@@ -104,7 +104,6 @@ void chooseRunMethod(int way, int i)
 		run = "./qRM1.exe " + getSystem(i);
 		system(run.c_str());
 		break;
-
 	case 9:
 	case 10:
 	case 11:
@@ -134,11 +133,98 @@ void rodaProcesso(int i)
 }
 
 
+
+bool qmodel()
+{
+// set model here without input
+// double precision
+	remove("hparam.txt");
+	ifstream inputServer_("inputServer.txt");
+	int restart, model;
+	inputServer_ >> restart;
+	inputServer_ >> model;
+	inputServer_.close();
+
+
+	ifstream points_("point.txt");
+	int nPoints;
+	vector<double> points; 
+	points_ >> nPoints;
+	points.resize(nPoints);
+	for(int i=0; i<nPoints; i++)
+	{
+		points_ >> points[i];
+	}
+	points_.close();
+
+	// models:  0 - qrm1 ; 1 - qover ; 2 - qint; 3 - qoverqint ; 4 - qalfa; 5 - qoverqalfa
+	// 1-over; 2-int; 3-alfa; 4-gauss
+	ofstream hparam_("hparam.txt");
+	hparam_ << 5 << endl;
+	for(int i=0; i<8; i++)
+	{
+		hparam_ << setprecision(16) << points[i] << endl;
+	}
+	switch(model)
+	{
+		case 0:
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 1:
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 2:
+			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 3:
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << setprecision(16) << points[9] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 4:
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 5:
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[9] << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		default:
+			cout << "ERRO EM qServer.x:  qmodel()" << endl;
+			exit(1);
+	}
+
+	if(restart==0)
+		return true;
+	else
+		return false;
+}
+
 int main()
 {
 	string fitness;
 	int repete = 0;
-	if (!is_file_exist("restartEnd.ga"))
+	if (qmodel())
 	{
 		while(repete==0)
 		{
@@ -164,8 +250,6 @@ int main()
 	}
 	else
 	{
-
-
 		const int totalJobs = 5;
 
 		ifstream iproc_("proc.txt");

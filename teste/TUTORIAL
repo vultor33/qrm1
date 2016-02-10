@@ -1,0 +1,22 @@
+
+
+
+inputServer.txt
+[
+restart: 0 para recomecar - 1 para calcular todos os pontos
+modelo:  0 - qrm1 ; 1 - qover ; 2 - qint; 3 - qoverqint ; 4 - qalfa; 5 - qoverqalfa
+]
+
+
+point.txt
+[
+n: numero de pontos
+x1
+x2
+x3
+x4
+...
+]
+
+
+
