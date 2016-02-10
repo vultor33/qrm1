@@ -84,14 +84,9 @@ void freeWayToRun(int iRun)
 			return;
 		}
 	}
-	//cout << "Erro em freeWayToRun " << endl
-	//	<< "Isso nao devia acontecer, contate desenvolvedores"
-	//	<< endl;
 }
-// nas primeiras ele tenta chegar nesse ponto antes mesmo de ter comecado a rodar.
-// o ssh e lento.
 
-// ssh fred@150.161.5.110 /home/fred/rindo/rindo/client/teste2/rindo_client.exe 46
+
 void chooseRunMethod(int way, int i)
 {
 	string run, pega;
@@ -115,20 +110,12 @@ void chooseRunMethod(int way, int i)
 	case 11:
 	case 12:
 	case 13:
-		//		run = clientPath2 + "rindo_client.exe  " + to_string(i);
-		//		system(run.c_str());
-		//		pega = "sftp -b ./batch/" + inpNames[i] + ".b " + clientName2;
-		//		system(pega.c_str());
-		//nova forma
-		break;
 	case 14:
 	case 15:
 	case 16:
 	case 17:
 	case 18:
 	case 19:
-		//		run = clientPath1 + "rindo_client.exe  " + to_string(i);
-		//		system(run.c_str());
 		break;
 	default:
 		cout << "Erro em runRindo" << endl
@@ -274,12 +261,12 @@ int main()
 		in_.close();
 
 		stringstream convert;
-		convert << error / 5.0e0;
+		convert << setprecision(16) << error / 5.0e0;
 		convert >> fitness;
 
 		ofstream restart_;
 		restart_.open("restart.ga", ios_base::app);
-		restart_ << error / 5.0e0 << endl;
+		restart_ << fitness << endl;
 		restart_.close();
 	}
 
