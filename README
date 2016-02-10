@@ -1,12 +1,18 @@
+ATENCAO
+
+-> OS EXECUTAVEIS SAO IGNORADOS, ENTAO QUANDO TROCAR DE BRANCH
+   TEM QUE COMPILAR DE NOVO.
 
 
+
+
+TUTORIAL - QSERVER
 
 inputServer.txt
 [
 restart: 0 para recomecar - 1 para calcular todos os pontos
 modelo:  0 - qrm1 ; 1 - qover ; 2 - qint; 3 - qoverqint ; 4 - qalfa; 5 - qoverqalfa
 ]
-
 
 point.txt
 [
@@ -17,6 +23,4 @@ x3
 x4
 ...
 ]
-
-
 
