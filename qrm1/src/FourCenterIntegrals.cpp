@@ -259,7 +259,6 @@ double FourCenterIntegrals::q_q_bracket(const Molecule &mol, int atomo_A, int at
 		double x = R_distancia*R_distancia + (ro_0_A + ro_0_B)*(ro_0_A + ro_0_B);
 		integral_AB = pow(1.5e0 - 0.5e0*pow(x, 1.0e0 - q), (1.0e0 / (1.0e0 - q)))
 			- Params::get_double(mol.atom_name[atomo_A],"qrinf");
-		cout << "qraiz:   " << integral_AB << endl;
 	}
 	else
 	{
