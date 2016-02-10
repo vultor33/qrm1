@@ -1,0 +1,7 @@
+#!/bin/bash
+g++  -I/home/vultor/PROGRAMAS/dlib-18.16 -c /home/vultor/PROGRAMAS/dlib-18.16/dlib/all/source.cpp
+
+ar rcs libdlib.a source.o
+
+rm source.o
+
