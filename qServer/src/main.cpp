@@ -19,6 +19,7 @@ using namespace std;
 
 vector<bool> done;
 vector<int> waysToRun;
+int nproc;
 
 bool is_file_exist(const char *fileName)
 {
@@ -143,6 +144,7 @@ bool qmodel()
 	int restart, model;
 	inputServer_ >> restart;
 	inputServer_ >> model;
+	inputServer_ >> nproc;
 	inputServer_.close();
 
 
@@ -251,11 +253,6 @@ int main()
 	else
 	{
 		const int totalJobs = 5;
-
-		ifstream iproc_("proc.txt");
-		int nproc;
-		iproc_ >> nproc;
-		iproc_.close();
 
 		done.resize(totalJobs);
 		vector<bool> activeProcess(totalJobs);
