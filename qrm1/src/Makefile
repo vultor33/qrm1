@@ -5,7 +5,7 @@ CC = g++
 CFLAGS = -Wall -g
 
 # define any directories containing header files other than /usr/include
-INCLUDES = -I../include -I/home/vultor/PROGRAMAS/dlib-18.16
+INCLUDES = -I../include -I../../../dlib-18.18
 
 # define library paths in addition to /usr/lib
 #   if I wanted to include libraries not in /usr/lib I'd specify
