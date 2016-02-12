@@ -26,3 +26,11 @@ x4
 ...
 ]
 
+ele tambem cospe o arquio: 'restart.fit'
+com todas as fitness na ordem em que elas apareceram
+arquivo com o potencial de ser usado em um potencial restart
+
+WARNING: E NECESSARIO APAGAR O 'restart.fit' ANTES DA OTIMIZACAO
+
+
+

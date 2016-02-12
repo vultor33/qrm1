@@ -346,7 +346,7 @@ int main()
 		convert >> fitness;
 
 		ofstream restart_;
-		restart_.open("restart.ga", ios_base::app);
+		restart_.open("restart.fit", ios_base::app);
 		restart_ << fitness << endl;
 		restart_.close();
 	}
