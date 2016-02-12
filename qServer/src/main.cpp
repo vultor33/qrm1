@@ -20,6 +20,7 @@ using namespace std;
 vector<bool> done;
 vector<int> waysToRun;
 int nproc;
+int nhydrogens;
 
 bool is_file_exist(const char *fileName)
 {
@@ -145,6 +146,7 @@ bool qmodel()
 	inputServer_ >> restart;
 	inputServer_ >> model;
 	inputServer_ >> nproc;
+	inputServer_ >> nhydrogens;
 	inputServer_.close();
 
 
@@ -252,7 +254,7 @@ int main()
 	}
 	else
 	{
-		const int totalJobs = 5;
+		int totalJobs = nhydrogens;
 
 		done.resize(totalJobs);
 		vector<bool> activeProcess(totalJobs);
@@ -320,29 +322,61 @@ int main()
 		ifstream in_;
 		double error = 0.0e0;
 		double aux;
-		in_.open("h2p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h2.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h3p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h4p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h5p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-
+		switch(nhydrogens)
+		{
+			case 9:
+				in_.open("h9p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 8:
+				in_.open("h8p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 7:
+				in_.open("h7p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 6:
+				in_.open("h6p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 5:
+				in_.open("h5p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 4:
+				in_.open("h4p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 3:
+				in_.open("h3p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 2:
+				in_.open("h2.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 1:
+				in_.open("h2p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+				break;
+			default:
+				cout << "ERROR ON getFitness.x" << endl;
+				exit(1);
+		}	
+		
 		stringstream convert;
-		convert << setprecision(16) << error / 5.0e0;
+		convert << setprecision(16) << error / nhydrogens;
 		convert >> fitness;
 
 		ofstream restart_;
@@ -351,7 +385,7 @@ int main()
 		restart_.close();
 	}
 
-	ofstream of_("fitness.ga");
+	ofstream of_("fitness.txt");
 	of_  << fitness << endl;
 	of_.close();
 
