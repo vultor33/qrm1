@@ -379,10 +379,10 @@ int main()
 		convert << setprecision(16) << error / nhydrogens;
 		convert >> fitness;
 
-		ofstream restart_;
-		restart_.open("restart.fit", ios_base::app);
-		restart_ << fitness << endl;
-		restart_.close();
+		//ofstream restart_;
+		//restart_.open("restart.fit", ios_base::app);
+		//restart_ << fitness << endl;
+		//restart_.close();
 	}
 
 	ofstream of_("fitness.txt");
