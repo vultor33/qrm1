@@ -1,13 +1,13 @@
 1
-0
-2
+8
+1
 5
 
 
 restart: 0 para recomecar - 1 para calcular todos os pontos
 
 modelo:  
-	0 - qrm1
+	0 - rm1
 	1 - qover
 	2 - qint
 	3 - qoverqint

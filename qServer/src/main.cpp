@@ -165,7 +165,7 @@ bool qmodel()
 	// 1-over; 2-int; 3-alfa; 4-gauss
 	ofstream hparam_("hparam.txt");
 	if((model == 8)||(model==9))
-		hparam_ << 6 << endl;
+		hparam_ << 0 << endl;
 	else
 		hparam_ << 5 << endl;
 	
@@ -231,6 +231,7 @@ bool qmodel()
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
+			break;
 
 		case 7:
 			hparam_ << 1.1972  << endl;
@@ -245,6 +246,7 @@ bool qmodel()
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
+			break;
 		
 		case 8:
 			hparam_ << 1.1901  << endl;
@@ -259,6 +261,7 @@ bool qmodel()
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
+			break;
 
 		case 9:
 			hparam_ << 1.1972  << endl;
@@ -273,6 +276,7 @@ bool qmodel()
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
+			break;
 
 		default:
 			cout << "ERRO EM qServer.x:  qmodel()" << endl;
