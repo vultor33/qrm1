@@ -164,10 +164,15 @@ bool qmodel()
 	// models:  0 - qrm1 ; 1 - qover ; 2 - qint; 3 - qoverqint ; 4 - qalfa; 5 - qoverqalfa
 	// 1-over; 2-int; 3-alfa; 4-gauss
 	ofstream hparam_("hparam.txt");
-	hparam_ << 5 << endl;
-	for(int i=0; i<8; i++)
+	if((model == 8)||(model==9))
+		hparam_ << 6 << endl;
+	else
+		hparam_ << 5 << endl;
+	
+	if(model < 6)
 	{
-		hparam_ << setprecision(16) << points[i] << endl;
+		for(int i=0; i<8; i++)
+			hparam_ << setprecision(16) << points[i] << endl;
 	}
 	switch(model)
 	{
@@ -212,6 +217,62 @@ bool qmodel()
 			hparam_ << setprecision(16) << points[9] << endl;
 			hparam_ << 1.0e0 << endl;
 			break;
+
+		case 6:
+			hparam_ << 1.1901  << endl;
+			hparam_ << 1.2784  << endl;
+			hparam_ << 0.9300 << endl;
+			hparam_ << 1.4933 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 1.1373 << endl;
+			hparam_ << 2.4347 << endl;
+			hparam_ << 1.1293 << endl;
+			hparam_ << setprecision(16) << points[1] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+
+		case 7:
+			hparam_ << 1.1972  << endl;
+			hparam_ << 1.3021  << endl;
+			hparam_ << 0.9381 << endl;
+			hparam_ << 1.4816 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 0.6860 << endl;
+			hparam_ << 12.1854 << endl;
+			hparam_ << 1.7997 << endl;
+			hparam_ << setprecision(16) << points[1] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+		
+		case 8:
+			hparam_ << 1.1901  << endl;
+			hparam_ << 1.2784  << endl;
+			hparam_ << 0.9300 << endl;
+			hparam_ << 1.4933 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 1.1373 << endl;
+			hparam_ << 2.4347 << endl;
+			hparam_ << 1.1293 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+
+		case 9:
+			hparam_ << 1.1972  << endl;
+			hparam_ << 1.3021  << endl;
+			hparam_ << 0.9381 << endl;
+			hparam_ << 1.4816 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 0.6860 << endl;
+			hparam_ << 12.1854 << endl;
+			hparam_ << 1.7997 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
 
 		default:
 			cout << "ERRO EM qServer.x:  qmodel()" << endl;
