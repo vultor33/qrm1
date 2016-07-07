@@ -1,5 +1,5 @@
 1
-4
+11
 1
 5
 
@@ -17,6 +17,8 @@ modelo:
 	7 - qover - so zeta e q para 9 clusters
 	8 - overlap -> gaussiana para 5 clusters
 	9 - overlap -> gaussian para 9 clusters	
+	10 - skew gaussian
+	11 - 2 gaussianas no q.
 
 proc: numero de processadores que serao usados no calculo
 

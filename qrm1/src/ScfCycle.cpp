@@ -218,8 +218,6 @@ double ScfCycle::gaussSkew(double r,double a, double b, double c, double d)
 	double xgauss = (r-c)/b;
 	double gauss = (1/sqrt(2.0e0 * pi)) * exp(-xgauss * xgauss/2.0e0);
 	double gSkew  = a * (2.0e0/b) * gauss  * skew;
-	cout << "r:  " << r << "  a:  " << a << "  b:  " << b << "  c:  " << c << "  d:  " << d << endl << "gskew:  " << gSkew << endl;
-	cin.get();
 	return gSkew;
 }
 

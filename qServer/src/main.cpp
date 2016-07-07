@@ -164,12 +164,21 @@ bool qmodel()
 	// models:  0 - qrm1 ; 1 - qover ; 2 - qint; 3 - qoverqint ; 4 - qalfa; 5 - qoverqalfa
 	// 1-over; 2-int; 3-alfa; 4-gauss
 	ofstream hparam_("hparam.txt");
+	bool readFirst8;
+	readFirst8 = ((model != 8) || (model != 9));
 	if((model == 8)||(model==9))
 		hparam_ << 0 << endl;
-	else
+	else if(model < 6)
 		hparam_ << 5 << endl;
-	
-	if(model < 6)
+	else if(model == 10)
+	{
+		hparam_ << 6 << endl;
+		model = 1;
+	}
+	else if(model == 11)
+		hparam_ << 4 << endl;
+
+	if(readFirst8)
 	{
 		for(int i=0; i<8; i++)
 			hparam_ << setprecision(16) << points[i] << endl;
@@ -272,6 +281,14 @@ bool qmodel()
 			hparam_ << 0.6860 << endl;
 			hparam_ << 12.1854 << endl;
 			hparam_ << 1.7997 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+		case 11:
+			for(int i=8; i<11; i++)
+				hparam_ << setprecision(16) << points[i] << endl;
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
