@@ -12,7 +12,7 @@ using namespace std;
 void Params::set_semiempirical_parameters(string method_in)
 {
 	int number_of_registered_atoms = 3;
-	int number_of_registered_double_parameters = 35;
+	int number_of_registered_double_parameters = 36;
 	int number_of_registered_int_parameters = 4;
 
 	set_parameter_vector_sizes(number_of_registered_atoms, number_of_registered_double_parameters, number_of_registered_int_parameters);
@@ -355,6 +355,10 @@ int Params::get_number_parameter_double(string parameter)
 	{
 		return 34;
 	}
+	else if (parameter == "skew")
+	{
+		return 35;
+	}
 	else
 	{
 		cout << "parametro nao cadastrado" << endl
@@ -468,6 +472,7 @@ void Params::set_rm1_H_parameters()
 	double_parameters[0][32] = 1.0e0; // q - gauss
 	double_parameters[0][33] = 0.0e0; // integral - q - R==0
 	double_parameters[0][34] = 0.0e0; // integral - q - R==inf
+	double_parameters[0][35] = 0.0e0; // gaussian skew
 
 }
 
@@ -720,6 +725,10 @@ string Params::getMethod(int methodNumber)
 		return "qRM1-1g";
 		break;
 
+        case 6:
+		return "skewRM1";
+		break;
+
 	default:
 		cout << "Erro em getMethod" << endl;
 		exit(3);
@@ -763,7 +772,18 @@ void Params::readFileMethod(ifstream &paramFile_)
 //	double_parameters[0][12] = readParam;
 	double_parameters[0][12] *= readParam;
 
-
+	if (method == "skewRM1")
+	{
+		paramFile_ >> readParam;
+		double_parameters[0][13] = readParam;
+		paramFile_ >> readParam;
+		double_parameters[0][14] = readParam;
+		paramFile_ >> readParam;
+		double_parameters[0][15] = readParam;
+		paramFile_ >> readParam;
+		double_parameters[0][35] = readParam; //skew
+	}
+	
 
 	// parando aqui e o RM1-1g
 	if (
