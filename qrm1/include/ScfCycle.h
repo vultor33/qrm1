@@ -38,6 +38,7 @@ private:
 	double oldElectronicEnergy;
 	bool checkDiis();
 	double expq(double x, double q);
+	double gaussSkew(double r, double a, double b, double c, double d);
 
 	Molecule &mol; //reference of outside Molecule object
 	FourCenterMatrix four_center_;

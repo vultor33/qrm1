@@ -104,45 +104,56 @@ double ScfCycle::core_core_repulsion()
 			//sohidrogeniomudar
 			double qgauss = Params::get_double(mol.atom_name[A], "qgauss");
 			string coreMethod = Params::method;
-			if (
-				(coreMethod[0] == 'q')
-				)
+
+			if(coreMethod == "skewRM1")
 			{
-				F_A = a1A*expq((-b1A*(RAB - c1A)*(RAB - c1A)), qgauss);
-				F_B = a1B*expq((-b1B*(RAB - c1B)*(RAB - c1B)), qgauss);
+				double d1A = Params::get_double(mol.atom_name[A], "skew");
+				double d1B = Params::get_double(mol.atom_name[B], "skew");
+				F_A = gaussSkew(RAB,a1A,b1A,c1A,d1A);
+				F_B = gaussSkew(RAB,a1B,b1B,c1B,d1B);
 			}
 			else
 			{
-				F_A = a1A*exp(-b1A*(RAB - c1A)*(RAB - c1A));
-				F_B = a1B*exp(-b1B*(RAB - c1B)*(RAB - c1B));
+				if (
+					(coreMethod[0] == 'q')
+					)
+				{
+					F_A = a1A*expq((-b1A*(RAB - c1A)*(RAB - c1A)), qgauss);
+					F_B = a1B*expq((-b1B*(RAB - c1B)*(RAB - c1B)), qgauss);
+				}
+				else
+				{
+					F_A = a1A*exp(-b1A*(RAB - c1A)*(RAB - c1A));
+					F_B = a1B*exp(-b1B*(RAB - c1B)*(RAB - c1B));
+				}
+					if (
+					((coreMethod != "RM1-1g") && (coreMethod != "qRM1-1g"))
+					&& (coreMethod[0] != 'q')
+					)
+				{
+					F_A += a2A*exp(-b2A*(RAB - c2A)*(RAB - c2A));
+					F_B += a2B*exp(-b2B*(RAB - c2B)*(RAB - c2B));
+				}
+				if (
+					((coreMethod != "RM1-1g") && (coreMethod != "qRM1-1g"))
+					&& (coreMethod[0] == 'q')
+					)
+				{
+					F_A += a2A*expq((-b2A*(RAB - c2A)*(RAB - c2A)),qgauss);
+					F_B += a2B*expq((-b2B*(RAB - c2B)*(RAB - c2B)),qgauss);
+				}
+				if (coreMethod == "RM1-3g")
+				{
+					F_A += a3A*exp(-b3A*(RAB - c3A)*(RAB - c3A));
+					F_B += a3B*exp(-b3B*(RAB - c3B)*(RAB - c3B));
+				}
+				if (coreMethod == "qRM1-3g")
+				{
+					F_A += a3A*expq((-b3A*(RAB - c3A)*(RAB - c3A)),qgauss);
+					F_B += a3B*expq((-b3B*(RAB - c3B)*(RAB - c3B)),qgauss);
+				}
 			}
-			if (
-				((coreMethod != "RM1-1g") && (coreMethod != "qRM1-1g"))
-				&& (coreMethod[0] != 'q')
-				)
-			{
-				F_A += a2A*exp(-b2A*(RAB - c2A)*(RAB - c2A));
-				F_B += a2B*exp(-b2B*(RAB - c2B)*(RAB - c2B));
-			}
-			if (
-				((coreMethod != "RM1-1g") && (coreMethod != "qRM1-1g"))
-				&& (coreMethod[0] == 'q')
-				)
-			{
-				F_A += a2A*expq((-b2A*(RAB - c2A)*(RAB - c2A)),qgauss);
-				F_B += a2B*expq((-b2B*(RAB - c2B)*(RAB - c2B)),qgauss);
-			}
-			if (coreMethod == "RM1-3g")
-			{
-				F_A += a3A*exp(-b3A*(RAB - c3A)*(RAB - c3A));
-				F_B += a3B*exp(-b3B*(RAB - c3B)*(RAB - c3B));
-			}
-			if (coreMethod == "qRM1-3g")
-			{
-				F_A += a3A*expq((-b3A*(RAB - c3A)*(RAB - c3A)),qgauss);
-				F_B += a3B*expq((-b3B*(RAB - c3B)*(RAB - c3B)),qgauss);
-			}
-
+	
 			za_zb = Params::get_int(mol.atom_name[A],"atomic_charge")*
 				Params::get_int(mol.atom_name[B], "atomic_charge");
 			gamass = Params::hartree_ev*four_center_.get_four_center(A, B, 0, 0, 0, 0);
@@ -156,7 +167,11 @@ double ScfCycle::core_core_repulsion()
 				(!isExchange)
 				)
 			{
-				expalfa = expq((-alfA*RAB), qalfa) + expq((-alfB*RAB), qalfa);
+				if((qalfa < 1) && 
+				  (  (alfA*RAB >= 1/(1-qalfa)) || (alfB*RAB >= 1/(1-qalfa))  ))
+					expalfa = 0.0e0;
+				else
+					expalfa = expq((-alfA*RAB), qalfa) + expq((-alfB*RAB), qalfa);
 			}	
 			else
 			{
@@ -194,6 +209,17 @@ double ScfCycle::expq(double x,double q)
 	}
 }
 
+double ScfCycle::gaussSkew(double r,double a, double b, double c, double d)
+{
+	double pi = 4.0e0 * atan(1);
+	double xdis = (d * ((r-c)/b))/sqrt(2.0e0);
+	double erfunc = tanh(sqrt(pi) * log(2.0e0) * xdis);
+	double skew = 0.5e0 * (1.0e0 + erfunc);
+	double xgauss = (r-c)/b;
+	double gauss = (1/sqrt(2.0e0 * pi)) * exp(-xgauss * xgauss/2.0e0);
+	double gSkew  = a * (2.0e0/b) * gauss  * skew;
+	return gSkew;
+}
 
 void ScfCycle::scfCycleInitialization()
 {

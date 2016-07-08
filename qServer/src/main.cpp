@@ -19,6 +19,8 @@ using namespace std;
 
 vector<bool> done;
 vector<int> waysToRun;
+int nproc;
+int nhydrogens;
 
 bool is_file_exist(const char *fileName)
 {
@@ -104,7 +106,6 @@ void chooseRunMethod(int way, int i)
 		run = "./qRM1.exe " + getSystem(i);
 		system(run.c_str());
 		break;
-
 	case 9:
 	case 10:
 	case 11:
@@ -134,11 +135,182 @@ void rodaProcesso(int i)
 }
 
 
+
+bool qmodel()
+{
+// set model here without input
+// double precision
+	remove("hparam.txt");
+	ifstream inputServer_("inputServer.txt");
+	int restart, model;
+	inputServer_ >> restart;
+	inputServer_ >> model;
+	inputServer_ >> nproc;
+	inputServer_ >> nhydrogens;
+	inputServer_.close();
+
+
+	ifstream points_("point.txt");
+	int nPoints;
+	vector<double> points; 
+	points_ >> nPoints;
+	points.resize(nPoints);
+	for(int i=0; i<nPoints; i++)
+	{
+		points_ >> points[i];
+	}
+	points_.close();
+
+	// models:  0 - qrm1 ; 1 - qover ; 2 - qint; 3 - qoverqint ; 4 - qalfa; 5 - qoverqalfa
+	// 1-over; 2-int; 3-alfa; 4-gauss
+	ofstream hparam_("hparam.txt");
+	bool readFirst8;
+	readFirst8 = ((model != 8) || (model != 9));
+	if((model == 8)||(model==9))
+		hparam_ << 0 << endl;
+	else if(model < 6)
+		hparam_ << 5 << endl;
+	else if(model == 10)
+	{
+		hparam_ << 6 << endl;
+		model = 1;
+	}
+	else if(model == 11)
+		hparam_ << 4 << endl;
+
+	if(readFirst8)
+	{
+		for(int i=0; i<8; i++)
+			hparam_ << setprecision(16) << points[i] << endl;
+	}
+	switch(model)
+	{
+		case 0:
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 1:
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 2:
+			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 3:
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << setprecision(16) << points[9] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 4:
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 5:
+			hparam_ << setprecision(16) << points[8] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[9] << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 6:
+			hparam_ << 1.1901  << endl;
+			hparam_ << 1.2784  << endl;
+			hparam_ << 0.9300 << endl;
+			hparam_ << 1.4933 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 1.1373 << endl;
+			hparam_ << 2.4347 << endl;
+			hparam_ << 1.1293 << endl;
+			hparam_ << setprecision(16) << points[1] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 7:
+			hparam_ << 1.1972  << endl;
+			hparam_ << 1.3021  << endl;
+			hparam_ << 0.9381 << endl;
+			hparam_ << 1.4816 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 0.6860 << endl;
+			hparam_ << 12.1854 << endl;
+			hparam_ << 1.7997 << endl;
+			hparam_ << setprecision(16) << points[1] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+		
+		case 8:
+			hparam_ << 1.1901  << endl;
+			hparam_ << 1.2784  << endl;
+			hparam_ << 0.9300 << endl;
+			hparam_ << 1.4933 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 1.1373 << endl;
+			hparam_ << 2.4347 << endl;
+			hparam_ << 1.1293 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		case 9:
+			hparam_ << 1.1972  << endl;
+			hparam_ << 1.3021  << endl;
+			hparam_ << 0.9381 << endl;
+			hparam_ << 1.4816 << endl;
+			hparam_ << setprecision(16) << points[0] << endl;
+			hparam_ << 0.6860 << endl;
+			hparam_ << 12.1854 << endl;
+			hparam_ << 1.7997 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+		case 11:
+			for(int i=8; i<11; i++)
+				hparam_ << setprecision(16) << points[i] << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			break;
+
+		default:
+			cout << "ERRO EM qServer.x:  qmodel()" << endl;
+			exit(1);
+	}
+
+	if(restart==0)
+		return true;
+	else
+		return false;
+}
+
 int main()
 {
 	string fitness;
 	int repete = 0;
-	if (!is_file_exist("restartEnd.ga"))
+	if (qmodel())
 	{
 		while(repete==0)
 		{
@@ -164,14 +336,7 @@ int main()
 	}
 	else
 	{
-
-
-		const int totalJobs = 5;
-
-		ifstream iproc_("proc.txt");
-		int nproc;
-		iproc_ >> nproc;
-		iproc_.close();
+		int totalJobs = nhydrogens;
 
 		done.resize(totalJobs);
 		vector<bool> activeProcess(totalJobs);
@@ -239,38 +404,70 @@ int main()
 		ifstream in_;
 		double error = 0.0e0;
 		double aux;
-		in_.open("h2p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h2.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h3p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h4p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-		in_.open("h5p.ga");
-		in_ >> aux;
-		error += aux;
-		in_.close();
-
+		switch(nhydrogens)
+		{
+			case 9:
+				in_.open("h9p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 8:
+				in_.open("h8p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 7:
+				in_.open("h7p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 6:
+				in_.open("h6p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 5:
+				in_.open("h5p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 4:
+				in_.open("h4p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 3:
+				in_.open("h3p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 2:
+				in_.open("h2.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+			case 1:
+				in_.open("h2p.ga");
+				in_ >> aux;
+				error += aux;
+				in_.close();
+				break;
+			default:
+				cout << "ERROR ON getFitness.x" << endl;
+				exit(1);
+		}	
+		
 		stringstream convert;
-		convert << setprecision(16) << error / 5.0e0;
+		convert << setprecision(16) << error / nhydrogens;
 		convert >> fitness;
 
-		ofstream restart_;
-		restart_.open("restart.ga", ios_base::app);
-		restart_ << fitness << endl;
-		restart_.close();
+		//ofstream restart_;
+		//restart_.open("restart.fit", ios_base::app);
+		//restart_ << fitness << endl;
+		//restart_.close();
 	}
 
-	ofstream of_("fitness.ga");
+	ofstream of_("fitness.txt");
 	of_  << fitness << endl;
 	of_.close();
 

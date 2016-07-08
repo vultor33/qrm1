@@ -30,7 +30,10 @@ void FitnessOpt::printFitness(ScfProcedure &scf_, bool printExcell, int model, s
 	ofstream errorFile;
 	errorName += ".ga";
 	errorFile.open(errorName.c_str());
-	errorFile << setprecision(16) << error;
+	errorFile << setprecision(16) << error << endl << endl;
+	errorFile << "energy error:  " << error1 << endl;
+	errorFile << "ionization error:  " << error2 << endl;
+	errorFile << "geometry error:  " << error3 << endl;
 	errorFile.close();
 
 	if (printExcell)

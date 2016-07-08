@@ -3,8 +3,8 @@
 *.x
 *.ga
 *.log
-
-
-
+restart.fit
+fitness.txt
+*.a
 
 

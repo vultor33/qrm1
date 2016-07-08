@@ -1,0 +1,37 @@
+ATENCAO
+
+-> OS EXECUTAVEIS SAO IGNORADOS, ENTAO QUANDO TROCAR DE BRANCH
+   TEM QUE COMPILAR DE NOVO.
+
+-> PRECISA DA BIBLIOTECA DLIB JUNTO DA PASTA PRINCIPAL SEM GIT: qrm1
+   CONSULTAR O MAKEFILE DO qRM1.EXE para mais informacoes.
+
+
+TUTORIAL - QSERVER
+
+inputServer.txt
+[
+restart: 0 para recomecar - 1 para calcular todos os pontos
+modelo:  0 - qrm1 ; 1 - qover ; 2 - qint; 3 - qoverqint ; 4 - qalfa; 5 - qoverqalfa
+proc: numero de processadores que serao usados no calculo
+nhydrogens: numero de hidrogenios q serao calculados
+]
+
+point.txt
+[
+n: numero de pontos
+x1
+x2
+x3
+x4
+...
+]
+
+ele tambem cospe o arquio: 'restart.fit'
+com todas as fitness na ordem em que elas apareceram
+arquivo com o potencial de ser usado em um potencial restart
+
+WARNING: E NECESSARIO APAGAR O 'restart.fit' ANTES DA OTIMIZACAO
+
+
+
