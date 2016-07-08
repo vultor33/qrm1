@@ -761,25 +761,23 @@ void Params::readFileMethod(ifstream &paramFile_)
 	double_parameters[0][26] = set_additive_term_ro_0(double_parameters[0][5]); //ro_0
 
 
-
-	paramFile_ >> readParam;
-//	double_parameters[0][10] = readParam;
-	double_parameters[0][10] *= readParam;
-	paramFile_ >> readParam;
-//	double_parameters[0][11] = readParam;
-	double_parameters[0][11] *= readParam;
-	paramFile_ >> readParam;
-//	double_parameters[0][12] = readParam;
-	double_parameters[0][12] *= readParam;
-
-	if (method == "skewRM1")
+	if(!(method == "skewRM1"))
 	{
 		paramFile_ >> readParam;
-		double_parameters[0][13] = readParam;
+		double_parameters[0][10] *= readParam;
 		paramFile_ >> readParam;
-		double_parameters[0][14] = readParam;
+		double_parameters[0][11] *= readParam;
 		paramFile_ >> readParam;
-		double_parameters[0][15] = readParam;
+		double_parameters[0][12] *= readParam;
+	}
+	else
+	{
+		paramFile_ >> readParam;
+		double_parameters[0][10] = readParam;
+		paramFile_ >> readParam;
+		double_parameters[0][11] = readParam;
+		paramFile_ >> readParam;
+		double_parameters[0][12] = readParam;
 		paramFile_ >> readParam;
 		double_parameters[0][35] = readParam; //skew
 	}

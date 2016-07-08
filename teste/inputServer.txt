@@ -1,5 +1,5 @@
 1
-11
+0
 1
 5
 
@@ -15,8 +15,8 @@ modelo:
 	5 - qoverqalfa
 	6 - qover - so zeta e q para 5 clusters
 	7 - qover - so zeta e q para 9 clusters
-	8 - overlap -> gaussiana para 5 clusters
-	9 - overlap -> gaussian para 9 clusters	
+	8 - overlap -> gaussiana para 5 clusters -- not working
+	9 - overlap -> gaussian para 9 clusters	-- not working
 	10 - skew gaussian
 	11 - 2 gaussianas no q.
 

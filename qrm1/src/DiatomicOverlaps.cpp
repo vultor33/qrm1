@@ -295,7 +295,7 @@ double DiatomicOverlaps::overlap_1s_1s(const Molecule &mol, int A, int B)
 			*(1.0e0 + ro_expoente + ro_expoente*ro_expoente / (3.0e0));
 		}
 	}
-	else if(Params::method[0] != 'q')
+	else if(Params::method == "gaussRM1")
 	{
 		overlap = exp(-ro_expoente * ro_expoente);
 	}
