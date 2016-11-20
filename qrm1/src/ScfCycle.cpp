@@ -142,7 +142,7 @@ double ScfCycle::core_core_repulsion()
 					F_A += a2A*expq((-b2A*(RAB - c2A)*(RAB - c2A)),qgauss);
 					F_B += a2B*expq((-b2B*(RAB - c2B)*(RAB - c2B)),qgauss);
 				}
-				if (coreMethod == "RM1-3g")
+				if ((coreMethod == "RM1-3g") || (coreMethod == "RM1"))
 				{
 					F_A += a3A*exp(-b3A*(RAB - c3A)*(RAB - c3A));
 					F_B += a3B*exp(-b3B*(RAB - c3B)*(RAB - c3B));

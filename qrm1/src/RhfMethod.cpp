@@ -135,7 +135,7 @@ double RhfMethod::couloumbExchangeMiLambda(int iFock, int jFock)
 			i_densidade = pMol->i_fock_base_line[A][ni];
 			j_densidade = pMol->i_fock_base_line[B][sigma];
 			auxsoma += densityMatrix[i_densidade][j_densidade] *
-				pFourCenter_->get_four_center(A, B, mi, ni, lambda, sigma, true);
+				pFourCenter_->get_four_center(A, B, mi, ni, lambda, sigma, false);
 		}
 	}
 

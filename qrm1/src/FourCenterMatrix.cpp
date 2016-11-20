@@ -135,10 +135,9 @@ void FourCenterMatrix::build_matrix_integrals(Molecule &mol)
 								matrix_integrals[A][B].f_center[nit][mit][sigmat][lambdat] = value;
 						}
 						*/
-		
+
 							if(not_done)
 							{
-
 								value = integrals_.get_four_center_integral(mol,A,B,mi,ni,lambda,sigma);
 								if (isnan(value))
 								{

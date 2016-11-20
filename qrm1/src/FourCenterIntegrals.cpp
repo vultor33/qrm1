@@ -85,7 +85,9 @@ double FourCenterIntegrals::do_the_calculation_of_the_integral(const Molecule &m
 			return 0.0e0;
 		case 1:
 			//cout << "ssss A:  " << atomo_A << "  B:  " << atomo_B << "  mi:  " << orbital_mi << "  ni  " << orbital_ni << " lam  " << orbital_lambda << "  sig  " << orbital_sigma << endl;
-			return Params::get_double(mol.atom_name[atomo_A], "qr0");
+			//fredmudar
+			//return Params::get_double(mol.atom_name[atomo_A], "qr0");
+			return Params::get_double(mol.atom_name[atomo_A], "gss");
 		case 2:
 			return Params::get_double(mol.atom_name[atomo_A], "gsp");
 		case 3:
