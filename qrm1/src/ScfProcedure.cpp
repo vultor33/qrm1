@@ -22,12 +22,12 @@ void ScfProcedure::startScfProcedure(Molecule * mol_in, PrintAll * printLog_in_)
 void ScfProcedure::doScfProcedure(string inputName)
 {
 	// object that prints all output
-	PrintAll printLog_("qRM1-teste");
+	PrintAll printLog_("qRM1-teste", 1);
 	printLog_.printOpening();
 
 	// parameters setting
 	Params::set_semiempirical_parameters("RM1");
-	Params::readFromFile("hparam.txt");
+//	Params::readFromFile("hparam.txt");
 
 	// input reading
 	Molecule mol(inputName);

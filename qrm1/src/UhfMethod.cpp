@@ -245,12 +245,10 @@ double UhfMethod::couloumbExchangeMiNi(int iFock, int jFock, string typeMatrix)
 
 void UhfMethod::build_density_matrix(const vector< vector<double> > &eigenvectors, string typeMatrix)
 {
-
 	for (int i = 0; i < fockMatrixSize; i++)
 	{
 		for (int j = 0; j < fockMatrixSize; j++)
 		{
-
 			if (typeMatrix == "alpha")
 			{
 				alphaDensityMatrix[i][j] = 0.0e0;
@@ -306,7 +304,10 @@ void UhfMethod::build_first_density_matrix()
 		alphaDensityMatrix[setDensity].resize(fockMatrixSize);
 		betaDensityMatrix[setDensity].resize(fockMatrixSize);
 	}
-
+	int charge = pMol->getCharge();
+	double chargeWeight = 1.0e0;
+	if (charge != 0)
+		chargeWeight = pMol->number_of_electrons / (pMol->number_of_electrons - charge);
 
 	double alphaFraction = (double)alphaElectrons / (double)num_electrons;
 	double betaFraction = (double)betaElectrons / (double)num_electrons;
@@ -326,8 +327,8 @@ void UhfMethod::build_first_density_matrix()
 				}
 				else
 				{
-					alphaDensityMatrix[i][i] = alphaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
-					betaDensityMatrix[i][i] = betaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
+					alphaDensityMatrix[i][i] = chargeWeight * alphaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
+					betaDensityMatrix[i][i] = chargeWeight * betaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
 				}
 			}
 		}

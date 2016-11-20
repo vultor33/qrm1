@@ -15,7 +15,7 @@ class Molecule
 public:
 	Molecule();
 	Molecule(std::string, int buildType=0);
-	Molecule(int charge, std::vector<std::string> labels);
+	Molecule(int charge_in, std::vector<std::string> labels);
 	~Molecule();
 	int number_of_atoms;
 	int number_of_electrons;
@@ -37,7 +37,10 @@ public:
 	void buildXyzAtoms(std::vector<CoordXYZ> &coord);
 	void print_on_screen();
 
+	int getCharge() { return charge; }
+
 private:
+	int charge;
 	int archive_extension;
 	void print_on_screen_ZMAT();
 	void print_on_screen_XYZ(std::string);

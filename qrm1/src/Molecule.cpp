@@ -45,15 +45,21 @@ Molecule::Molecule(string arquivoxyz, int buildType)
 		for (int i = 0; i < number_of_atoms; i++)
 		{
 			distancia_i_j[i].resize(number_of_atoms);
-			atom_name[i] = MolZMAT[i].atomlabel;
+			if(archive_extension == 0)
+				atom_name[i] = MolXYZ[i].atomlabel;
+			else
+				atom_name[i] = MolZMAT[i].atomlabel;
 			aux_n_eletrons += Params::get_int(atom_name[i], "number_of_electrons");
 		}
 		number_of_electrons = aux_n_eletrons;
 		if ((number_of_electrons % 2) != 0)
+		{
 			number_of_electrons--;
+			charge = 1;
+		}
 }
 
-Molecule::Molecule(int charge, std::vector<std::string> labels)
+Molecule::Molecule(int charge_in, std::vector<std::string> labels)
 {
 	number_of_atoms = labels.size();
 	atom_name.resize(number_of_atoms);
@@ -67,6 +73,7 @@ Molecule::Molecule(int charge, std::vector<std::string> labels)
 		aux_n_eletrons += Params::get_int(atom_name[i], "number_of_electrons");
 	}
 	number_of_electrons = aux_n_eletrons - charge;
+	charge = charge;
 }
 
 Molecule::~Molecule(){}
@@ -173,9 +180,11 @@ void Molecule::get_extension_from_name(string s)
 void Molecule::build_atoms()
 {
 	ZmatoCart xyz;
-	xyz.ztocart(MolZMAT);
-	this->MolXYZ = xyz.MolXYZ;
-
+	if (MolZMAT.size() != 0)
+	{
+		xyz.ztocart(MolZMAT);
+		this->MolXYZ = xyz.MolXYZ;
+	}
 	for (int i = 0; i < number_of_atoms; i++)
 	{
 		for (int j = 0; j < number_of_atoms; j++)
@@ -183,9 +192,9 @@ void Molecule::build_atoms()
 			if (i != j)
 			{
 				distancia_i_j[i][j] = Params::angs_bohr*
-					sqrt((xyz.MolXYZ[i].x - xyz.MolXYZ[j].x)*(xyz.MolXYZ[i].x - xyz.MolXYZ[j].x)
-					+ (xyz.MolXYZ[i].y - xyz.MolXYZ[j].y)*(xyz.MolXYZ[i].y - xyz.MolXYZ[j].y)
-					+ (xyz.MolXYZ[i].z - xyz.MolXYZ[j].z)*(xyz.MolXYZ[i].z - xyz.MolXYZ[j].z));
+					sqrt((MolXYZ[i].x - MolXYZ[j].x)*(MolXYZ[i].x - MolXYZ[j].x)
+					+ (MolXYZ[i].y - MolXYZ[j].y)*(MolXYZ[i].y - MolXYZ[j].y)
+					+ (MolXYZ[i].z - MolXYZ[j].z)*(MolXYZ[i].z - MolXYZ[j].z));
 
 			}
 			else

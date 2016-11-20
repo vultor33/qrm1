@@ -46,6 +46,11 @@ int main(int argc, char *argv[])
 	std::vector<double> startingPoint;
 	double finalEnergy;
 	ScfProcedure scf_;
+
+	//fredmudar
+	scf_.doScfProcedure("h3.xyz");
+
+
 	FitnessOpt fit_;
 	switch (readQ_.getParametricType())
 	{

@@ -246,6 +246,11 @@ void RhfMethod::build_first_density_matrix()
 		densityMatrix[def_densidade].resize(fockMatrixSize);
 	}
 
+	int charge = pMol->getCharge();
+	double chargeWeight = 1.0e0;
+	if(charge != 0 )
+		chargeWeight = (double)pMol->number_of_electrons / (double)(pMol->number_of_electrons + charge);
+
 	int j_base = 0;
 	for (int i = 0; i < fockMatrixSize; i++)
 	{
@@ -260,7 +265,7 @@ void RhfMethod::build_first_density_matrix()
 				}
 				else
 				{
-					densityMatrix[i][i] = ((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
+					densityMatrix[i][i] = chargeWeight * ((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
 				}
 			}
 		}
