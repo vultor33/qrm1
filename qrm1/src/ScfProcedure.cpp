@@ -37,7 +37,13 @@ void ScfProcedure::doScfProcedure(string inputName)
 	mol.build_atoms();
 
 	// self consistent field
-	ScfCycle cycle_(mol, printLog_);
+	string scfMethod;
+	if (mol.number_of_electrons % 2 == 0)
+		scfMethod = "RHF";
+	else
+		scfMethod = "UHF";
+
+	ScfCycle cycle_(mol, printLog_, scfMethod);
 	if (cycle_.qNotNan())
 	{
 		bool converged;

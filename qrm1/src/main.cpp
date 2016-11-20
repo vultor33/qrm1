@@ -30,9 +30,6 @@ ATENCAO - mudanas para funcionar o q
 - fredmudar em:
 double FourCenterIntegrals::do_the_calculation_of_the_integral(const Molecule &mol, int atomo_A, int atomo_B, int orbital_mi, int orbital_ni, int orbital_lambda, int orbital_sigma)
 
-
-
-
 */
 
 
@@ -61,7 +58,8 @@ int main(int argc, char *argv[])
 
 	//fredmudar
 	scf_.doScfProcedure("h3.xyz");
-
+	cout << "PARAMETERIZATION DESACTIVATED CHECK SOURCE CODE" << endl;
+	exit(1);
 
 	FitnessOpt fit_;
 	switch (readQ_.getParametricType())

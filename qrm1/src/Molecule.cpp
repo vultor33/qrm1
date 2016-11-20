@@ -54,8 +54,8 @@ Molecule::Molecule(string arquivoxyz, int buildType)
 		number_of_electrons = aux_n_eletrons;
 		if ((number_of_electrons % 2) != 0)
 		{
-			number_of_electrons--;
-			charge = 1;
+			//number_of_electrons--;
+			//charge = 1;
 		}
 }
 
