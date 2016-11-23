@@ -57,6 +57,9 @@ Molecule::Molecule(string arquivoxyz, int buildType)
 			//number_of_electrons--;
 			//charge = 1;
 		}
+		number_of_electrons--;
+		charge = 1;
+
 }
 
 Molecule::Molecule(int charge_in, std::vector<std::string> labels)
@@ -72,8 +75,8 @@ Molecule::Molecule(int charge_in, std::vector<std::string> labels)
 		atom_name[i] = labels[i];
 		aux_n_eletrons += Params::get_int(atom_name[i], "number_of_electrons");
 	}
-	number_of_electrons = aux_n_eletrons - charge;
-	charge = charge;
+	number_of_electrons = aux_n_eletrons - charge_in;
+	charge = charge_in;
 }
 
 Molecule::~Molecule(){}

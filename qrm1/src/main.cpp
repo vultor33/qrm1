@@ -57,9 +57,9 @@ int main(int argc, char *argv[])
 	ScfProcedure scf_;
 
 	//fredmudar
-	scf_.doScfProcedure("h3.xyz");
-	cout << "PARAMETERIZATION DESACTIVATED CHECK SOURCE CODE" << endl;
-	exit(1);
+//	scf_.doScfProcedure("h4p.xyz");
+//	cout << "PARAMETERIZATION DESACTIVATED CHECK SOURCE CODE" << endl;
+//	exit(1);
 
 	FitnessOpt fit_;
 	switch (readQ_.getParametricType())
