@@ -297,6 +297,8 @@ void UhfMethod::electronic_energy(vector< vector<double> > &coreFockMatrix)
 
 void UhfMethod::build_first_density_matrix()
 {
+	cout << "problema no input da carga" << endl;
+
 	alphaDensityMatrix.resize(fockMatrixSize);
 	betaDensityMatrix.resize(fockMatrixSize);
 	for (int setDensity = 0; setDensity < fockMatrixSize; setDensity++)
@@ -305,6 +307,9 @@ void UhfMethod::build_first_density_matrix()
 		betaDensityMatrix[setDensity].resize(fockMatrixSize);
 	}
 	int charge = pMol->getCharge();
+
+	cout << "charge:  " << charge << endl;
+
 	double chargeWeight = 1.0e0;
 	if (charge != 0)
 		chargeWeight = pMol->number_of_electrons / (pMol->number_of_electrons - charge);
@@ -334,6 +339,7 @@ void UhfMethod::build_first_density_matrix()
 		}
 	}
 
+	cout << "first denstiy final" << endl;
 	pPrintLog_->printScfMatrix("first density", alphaDensityMatrix);
 	pPrintLog_->printScfMatrix("first density", betaDensityMatrix);
 }

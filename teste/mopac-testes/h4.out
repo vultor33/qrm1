@@ -1,0 +1,183 @@
+ *******************************************************************************
+ ** Site#: 6211         For non-commercial use only    Version 17.173L 64BITS **
+ *******************************************************************************
+ ** Cite this program as: MOPAC2016, Version: 17.173L, James J. P. Stewart,   **
+ ** Stewart Computational Chemistry, web: HTTP://OpenMOPAC.net. Days left: 106**
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2016                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                              RM1 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                Thu Mar  8 09:47:28 2018  *
+ *  RM1        - The RM1 Hamiltonian to be used
+ *  UHF        - UNRESTRICTED HARTREE-FOCK CALCULATION
+ *  1SCF       - DO 1 SCF AND THEN STOP 
+ *  T=         - A TIME OF 172800.0 SECONDS REQUESTED
+ *  DUMP=N     - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *******************************************************************************
+RM1 1SCF UHF
+ titulo
+
+   ATOM   CHEMICAL          X               Y               Z
+  NUMBER   SYMBOL      (ANGSTROMS)     (ANGSTROMS)     (ANGSTROMS)
+ 
+     1       H          0.00000000  *   0.00000000  *   0.00000000  *
+     2       H          1.00000000  *   0.00000000  *   0.00000000  *
+     3       H          2.00000000  *   0.00000000  *   0.00000000  *
+     4       H          3.00000000  *   0.00000000  *   0.00000000  *
+ 
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         H        0.0000    0.0000    0.0000
+     2         H        1.0000    0.0000    0.0000
+     3         H        2.0000    0.0000    0.0000
+     4         H        3.0000    0.0000    0.0000
+
+  H: (RM1): G.B. ROCHA, R.O. FREIRE, A.M.SIMAS, J.J.P. STEWART, J. COMP. CHEM. 27, 1101 (2006)
+
+           Empirical Formula: H4  =     4 atoms
+
+
+
+      MOLECULAR POINT GROUP   :   D*h 
+
+
+          UHF CALCULATION, NO. OF ALPHA ELECTRONS =    2
+                           NO. OF BETA  ELECTRONS =    2
+
+ -------------------------------------------------------------------------------
+RM1 1SCF UHF
+ titulo
+
+
+
+     1SCF WAS SPECIFIED, SO BFGS WAS NOT USED                 
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                              RM1 CALCULATION
+                                                       MOPAC2016 (Version: 17.173L)
+                                                       Thu Mar  8 09:47:28 2018
+                                                       No. of days remaining = 106
+
+
+
+
+          FINAL HEAT OF FORMATION =         48.76240 KCAL/MOL =     204.02190 KJ/MOL
+
+
+          TOTAL ENERGY            =        -54.76560 EV
+          ELECTRONIC ENERGY       =       -105.58583 EV  POINT GROUP:     D*h 
+          CORE-CORE REPULSION     =         50.82023 EV
+          COSMO AREA              =         45.58 SQUARE ANGSTROMS
+          COSMO VOLUME            =         24.57 CUBIC ANGSTROMS
+
+          IONIZATION POTENTIAL    =         10.397226 EV
+          ALPHA SOMO LUMO (EV)    =        -10.397  2.161
+          BETA  SOMO LUMO (EV)    =        -10.397  2.161
+          NO. OF ALPHA ELECTRONS  =          2
+          NO. OF BETA  ELECTRONS  =          2
+          MOLECULAR WEIGHT        =          4.0316
+
+          MOLECULAR DIMENSIONS (Angstroms)
+
+            Atom       Atom       Distance
+            H     4    H     1     3.00000
+            H     4    H     1     0.00000
+            H     1    H     2     0.00000
+
+
+          SCF CALCULATIONS        =          1
+ 
+          WALL-CLOCK TIME         =          0.020 SECONDS
+          COMPUTATION TIME        =          0.016 SECONDS
+
+
+
+
+   ATOM   CHEMICAL          X               Y               Z
+  NUMBER   SYMBOL      (ANGSTROMS)     (ANGSTROMS)     (ANGSTROMS)
+ 
+     1       H          0.00000000  *   0.00000000  *   0.00000000  *
+     2       H          1.00000000  *   0.00000000  *   0.00000000  *
+     3       H          2.00000000  *   0.00000000  *   0.00000000  *
+     4       H          3.00000000  *   0.00000000  *   0.00000000  *
+
+                             CARTESIAN COORDINATES
+
+   1    H        0.000000000     0.000000000     0.000000000
+   2    H        1.000000000     0.000000000     0.000000000
+   3    H        2.000000000     0.000000000     0.000000000
+   4    H        3.000000000     0.000000000     0.000000000
+
+
+           Empirical Formula: H4  =     4 atoms
+
+
+
+      MOLECULAR POINT GROUP   :   D*h 
+
+
+          ALPHA EIGENVALUES  
+ -16.82753 -10.39723   2.16142   4.62860
+
+
+           BETA EIGENVALUES 
+ -16.82735 -10.39740   2.16107   4.62895
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+
+  ATOM NO.   TYPE          CHARGE      No. of ELECS.   s-Pop       
+    1          H          -0.050968        1.0510     1.05097
+    2          H           0.050932        0.9491     0.94907
+    3          H           0.050758        0.9492     0.94924
+    4          H          -0.050722        1.0507     1.05072
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     0.001     0.000     0.000     0.001
+ HYBRID         0.000     0.000     0.000     0.000
+ SUM            0.001     0.000     0.000     0.001
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+     Atom    s   
+    1  H   1.05097
+    2  H   0.94907
+    3  H   0.94924
+    4  H   1.05072
+
+
+                    (SZ)    =    0.000000
+                    (S**2)  =    0.000501
+
+
+          ATOMIC ORBITAL SPIN POPULATIONS
+
+    Atom   Total    s   
+         Atomic
+    1  H  0.0164  0.016
+    2  H -0.0118 -0.012
+    3  H  0.0120  0.012
+    4  H -0.0166 -0.017
+
+ **********************
+ *                    *
+ * JOB ENDED NORMALLY *
+ *                    *
+ **********************
+
+
+
+ TOTAL JOB TIME:             0.03 SECONDS
+
+ == MOPAC DONE ==

@@ -6,5 +6,7 @@
 restart.fit
 fitness.txt
 *.a
+teste/back*
+teste/antigo*
 
 

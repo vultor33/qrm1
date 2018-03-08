@@ -1,3 +1,13 @@
+qinput.txt - define o modelo
+
+extensao .xyz - define as coordenadas
+
+
+TIPOS DE SCF
+ -> 0 RHF
+ -> 1 UHF
+
+
 CHANGELOG
 
 11/02/2016

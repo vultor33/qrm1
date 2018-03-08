@@ -44,6 +44,7 @@ void ScfProcedure::doScfProcedure(string inputName)
 		scfMethod = "UHF";
 
 	ScfCycle cycle_(mol, printLog_, scfMethod);
+
 	if (cycle_.qNotNan())
 	{
 		bool converged;
