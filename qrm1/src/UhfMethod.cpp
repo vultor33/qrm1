@@ -22,6 +22,8 @@ void UhfMethod::startUhfFockMatrix(int fock_matrix_size,
 	pFourCenter_ = &four_center_;
 	pPrintLog_ = pPrintLog_in_;
 	num_electrons = mol.number_of_electrons;
+	int charge = mol.getCharge();
+	num_electrons -= charge;
 	if ((num_electrons % 2) == 1)
 	{
 		alphaElectrons = 1 + (num_electrons - 1) / 2;
@@ -297,8 +299,6 @@ void UhfMethod::electronic_energy(vector< vector<double> > &coreFockMatrix)
 
 void UhfMethod::build_first_density_matrix()
 {
-	cout << "problema no input da carga" << endl;
-
 	alphaDensityMatrix.resize(fockMatrixSize);
 	betaDensityMatrix.resize(fockMatrixSize);
 	for (int setDensity = 0; setDensity < fockMatrixSize; setDensity++)
@@ -308,14 +308,12 @@ void UhfMethod::build_first_density_matrix()
 	}
 	int charge = pMol->getCharge();
 
-	cout << "charge:  " << charge << endl;
-
-	double chargeWeight = 1.0e0;
-	if (charge != 0)
-		chargeWeight = pMol->number_of_electrons / (pMol->number_of_electrons - charge);
-
-	double alphaFraction = (double)alphaElectrons / (double)num_electrons;
-	double betaFraction = (double)betaElectrons / (double)num_electrons;
+//	double chargeWeight = 1.0e0;
+//	if (charge != 0)
+//		chargeWeight = pMol->number_of_electrons / (pMol->number_of_electrons - charge);
+	
+	double alphaFraction = (double)alphaElectrons / ((double)num_electrons);
+	double betaFraction = (double)alphaElectrons / ((double)num_electrons);
 
 	int j_base = 0;
 	for (int i = 0; i < fockMatrixSize; i++)
@@ -332,14 +330,13 @@ void UhfMethod::build_first_density_matrix()
 				}
 				else
 				{
-					alphaDensityMatrix[i][i] = chargeWeight * alphaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
-					betaDensityMatrix[i][i] = chargeWeight * betaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
+					alphaDensityMatrix[i][i] = alphaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
+					betaDensityMatrix[i][i] =  betaFraction*((double)Params::get_int(pMol->atom_name[B], "number_of_electrons")) / ((double)Params::get_int(pMol->atom_name[B], "base_number"));
 				}
 			}
 		}
 	}
 
-	cout << "first denstiy final" << endl;
 	pPrintLog_->printScfMatrix("first density", alphaDensityMatrix);
 	pPrintLog_->printScfMatrix("first density", betaDensityMatrix);
 }

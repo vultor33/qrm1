@@ -43,10 +43,8 @@ void OptimizeWithDlib::optimizen(
 		),
 		FunctionDlibn(&mol, printLog_, conections),
 		starting_point,
-		finalEnergy
+		1.5e0 * finalEnergy
 		);
-
-	// ENERGIA LIMITE ADMINISTRAR 50%
 
 	//repetir o calculo.
 	std::vector<CoordZMAT> zmat;

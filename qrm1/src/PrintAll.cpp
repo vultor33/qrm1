@@ -87,6 +87,27 @@ void PrintAll::printOpening()
 		       << "              author:Fred Vultor" << endl << endl;
 }
 
+void PrintAll::prinParameters()
+{
+	logOutput_ << "METHOD:  " << Params::method << endl
+		<< "H parameters: " << endl
+		<< "Uss:  " << Params::get_double("H", "uss") << endl
+		<< "Betas:  " << Params::get_double("H", "betas") << endl
+		<< "alfacore:  " << Params::get_double("H", "alfacore") << endl
+		<< "gss:  " << Params::get_double("H", "gss") << endl
+		<< "a1core:  " << Params::get_double("H", "a1core") << endl
+		<< "b1core:  " << Params::get_double("H", "b1core") << endl
+		<< "c1core:  " << Params::get_double("H", "c1core") << endl
+		<< "zetas:  " << Params::get_double("H", "expoents") << endl
+		<< "qover:  " << Params::get_double("H", "qover") << endl
+		<< "qmono:  " << Params::get_double("H", "qmono") << endl
+		<< "qalfa:  " << Params::get_double("H", "qalfa") << endl
+		<< "qgauss:  " << Params::get_double("H", "qgauss") << endl
+		<< endl << endl;
+
+
+}
+
 void PrintAll::printMatrix(const vector< vector<double> > &entryMatrix, double unitConversion)
 {
 	int lines = entryMatrix.size();
@@ -293,14 +314,19 @@ void PrintAll::printScfHeader(int flag)
 	}
 }
 
-void PrintAll::printFinalEnergy(double elecEnergy, double coreEnergy)
+void PrintAll::printFinalEnergy(
+	double elecEnergy, 
+	double coreEnergy, 
+	double ionizationPotential)
 {
-	logOutput_ << "Final electronic energy:  " << setprecision(6)
-		<< elecEnergy << endl
-		<< "Core repulsion energy:  " << setprecision(6)
-		<< coreEnergy << endl
-		<< "Total energy:  " << setprecision(6)
-		<< coreEnergy + elecEnergy
+	logOutput_  << "Total energy:  " 
+		<< fixed << setprecision(8) << coreEnergy + elecEnergy << endl
+		<< "Final electronic energy:  " 
+		<< fixed << setprecision(8) << elecEnergy << endl
+		<< "Core repulsion energy:  " 
+		<< fixed << setprecision(8) << coreEnergy << endl
+		<< "Ionization potential:  "
+		<< fixed << setprecision(8) << ionizationPotential << endl
 		<< endl << endl;
 }
 

@@ -93,24 +93,28 @@ int main(int argc, char *argv[])
 
 	ReadqInput readQ_(qinputName.c_str());
 	Params::set_semiempirical_parameters("RM1");
+	Params::readFromFileParametrization("hparam.txt");
 	PrintAll printLog_(readQ_.printLogName() , readQ_.getDebugLevel());
 	printLog_.printOpening();
+	printLog_.prinParameters();
 	Molecule mol(readQ_.getCharge(), readQ_.getLabels());
 	mol.setPrintLog(printLog_);
 	mol.scfMethod = readQ_.getScfType();
-	Params::readFromFileParametrization("hparam.txt");
+	ScfProcedure scf_;
+
+
+	/* fredmudar - testes pontuais	
+	scf_.startScfProcedure(&mol, &printLog_);
+	scf_.doScfProcedure(readQ_.getCoordinates());
+	cout << "PARAMETERIZATION DESACTIVATED CHECK SOURCE CODE" << endl;
+	exit(1);
+	*/
+
 
 	OptimizeWithDlib opt_;
 	std::vector<int> conections;
 	std::vector<double> startingPoint;
 	double finalEnergy;
-	ScfProcedure scf_;
-
-	//fredmudar
-	scf_.doScfProcedure("input.xyz");
-	cout << "PARAMETERIZATION DESACTIVATED CHECK SOURCE CODE" << endl;
-	exit(1);
-
 	FitnessOpt fit_;
 	switch (readQ_.getParametricType())
 	{

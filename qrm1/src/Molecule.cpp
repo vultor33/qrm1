@@ -75,7 +75,7 @@ Molecule::Molecule(int charge_in, std::vector<std::string> labels)
 		atom_name[i] = labels[i];
 		aux_n_eletrons += Params::get_int(atom_name[i], "number_of_electrons");
 	}
-	number_of_electrons = aux_n_eletrons - charge_in;
+	number_of_electrons = aux_n_eletrons;
 	charge = charge_in;
 }
 

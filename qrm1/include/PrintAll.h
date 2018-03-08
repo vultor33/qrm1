@@ -17,6 +17,8 @@ public:
 
 	void printOpening();
 
+	void prinParameters();
+
 	void printScfMatrix(
 		std::string matrixType,
 		const std::vector< std::vector<double> > &entryMatrix,
@@ -41,7 +43,7 @@ public:
 
 	void printIteration(int iStep, double energy, double energyVariation = 0.0e0, double densityRms = 0.0e0);
 	void printScfHeader(int flag = 0);
-	void printFinalEnergy(double elecEnergy, double coreEnergy);
+	void printFinalEnergy(double elecEnergy, double coreEnergy, double ionizationPotential);
 	void printEndOfScf(bool converged);
 	void printStartDiis();
 	void printErrorDiis(double maxError);

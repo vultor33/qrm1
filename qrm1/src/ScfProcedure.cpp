@@ -75,7 +75,7 @@ double ScfProcedure::doScfProcedure(vector<double> &xyzCoord)
 	if (cycle_.qNotNan())
 	{
 		bool converged;
-		for (int i = 1; i < 50; i++)
+		for (int i = 1; i < 100; i++)
 		{
 			converged = cycle_.SCF_step_i(i);
 			if (converged||!(cycle_.qNotNan()))

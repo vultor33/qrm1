@@ -43,15 +43,12 @@ ReadqInput::ReadqInput(string inputName)
 	coordinates.resize(nAtoms * 3);
 	for (int i = 0; i < nAtoms; i++)
 	{
-		qinp_ >> labels[i];
+		qinp_ >> labels[i] 
+			>> coordinates[i]
+			>> coordinates[i + nAtoms]
+			>> coordinates[i + 2 * nAtoms];
 //		cout << "labels[i]:  " << labels[i] << endl;
 	}
-	for (int i = 0; i < 3*nAtoms; i++)
-	{
-		qinp_ >> coordinates[i];
-//		cout << "coordinates[i]:  " << coordinates[i] << endl;
-	}
-
 	qinp_.close();
 }
 

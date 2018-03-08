@@ -1,10 +1,50 @@
 ATENCAO
 
+-> ANTES DE PARAMETRIZAR
+   - fazer testes com a otimizacao.
+   - fazer testes com os q's, pequenas modificacoes de energia.
+   - otimizar uma vez com o q.
+
 -> OS EXECUTAVEIS SAO IGNORADOS, ENTAO QUANDO TROCAR DE BRANCH
    TEM QUE COMPILAR DE NOVO.
 
 -> PRECISA DA BIBLIOTECA DLIB JUNTO DA PASTA PRINCIPAL SEM GIT: qrm1
    CONSULTAR O MAKEFILE DO qRM1.EXE para mais informacoes.
+
+TUTORIAL - qRM1
+
+qinput.txt
+[
+modelo:  2
+natomos: 2    
+charge:  0   
+scftype:  1  
+debuglevel:  2
+printexcell:  0
+H
+H   
+0
+0
+0... um tanto de zero. era para estar relacionado a coordendas.
+]
+
+hparam.txt
+a leitura dos parametros e feita em variacoes do H do RM1.
+[
+5       - tipo de metdodo: vamos usar o 5 sempre qRM1-1g
+0       - uss
+2       - betas
+4       - alfacore
+5       - gss
+22      - zetas
+10      - a1core
+11      - b1core
+12      - c1core
+29      - qoverlap
+30      - qmonopolo
+31      - qalfa
+32      - qgaussian
+]
 
 
 TUTORIAL - QSERVER
@@ -35,3 +75,35 @@ WARNING: E NECESSARIO APAGAR O 'restart.fit' ANTES DA OTIMIZACAO
 
 
 
+
+
+
+qinput.txt - define o modelo
+
+extensao .xyz - define as coordenadas
+
+
+TIPOS DE SCF
+ -> 0 RHF
+ -> 1 UHF
+
+
+CHANGELOG
+
+11/02/2016
+no qalfa: se q<1  e  ax <  1/(1-q)  entao, exp = 0
+
+
+
+
+EXEMPLO PARA COMPILAR O TESTE
+
+#!/bin/bash
+cd ../qServer/src
+make
+mv qServer.x ../../teste/
+cd ../../teste/
+cd ../qrm1/src
+make
+mv qRM1.exe ../../teste/
+cd ../../teste/

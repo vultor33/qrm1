@@ -41,7 +41,7 @@ bool ScfCycle::SCF_step_i(int iStep, int diagMethod)
 double ScfCycle::getFinalEnergy()
 {
 	double coreEnergy = core_core_repulsion();
-	pPrintLog_->printFinalEnergy(Params::hartree_ev*oldElectronicEnergy, coreEnergy);
+	pPrintLog_->printFinalEnergy(Params::hartree_ev*oldElectronicEnergy, coreEnergy, Params::hartree_ev*getIonizationPotential());
 	return Params::hartree_ev*oldElectronicEnergy + coreEnergy;
 }
 
