@@ -346,6 +346,11 @@ int main()
 			activeProcess[i] = false;
 		}
 
+		// serial run
+		for(size_t i = 0; i < 5; i++)
+			chooseRunMethod(0,i);
+
+		/*
 		thread t[totalJobs];
 		waysToRun.resize(nproc);
 		for (int i = 0; i < nproc; i++)
@@ -361,7 +366,7 @@ int main()
 		{
 			for (int i = 0; i < totalJobs; i++)
 			{
-				//cout << "done:  " << done[i] << "  active " << activeProcess[i] << endl;
+				cout << "done:  " << done[i] << "  active " << activeProcess[i] << endl;
 				//cin.get();
 
 				if (done[i] && activeProcess[i])
@@ -372,7 +377,7 @@ int main()
 
 					if (i == (totalJobs - 1))
 					{
-						//cout << "acabou" << endl;
+						cout << "acabou" << endl;
 						finished = true;
 						break;
 					}
@@ -400,6 +405,7 @@ int main()
 				t[i].join();
 			}
 		}
+		*/
 
 		ifstream in_;
 		double error = 0.0e0;
