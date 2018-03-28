@@ -1,0 +1,8 @@
+modelo:  1
+natomos: 2
+charge:  1
+scftype:  1
+debuglevel:  2
+printexcell:  0
+H  0.455153563 1.034149373 0.741255781
+H  1.018872756 1.498049163 1.183538868
