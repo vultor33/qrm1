@@ -8,5 +8,7 @@ fitness.txt
 *.a
 teste/back*
 teste/antigo*
+qrm1/src/teste*
+teste*
 
 

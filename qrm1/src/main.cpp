@@ -35,56 +35,6 @@ double FourCenterIntegrals::do_the_calculation_of_the_integral(const Molecule &m
 
 int main(int argc, char *argv[])
 {
-
-	/*
-	MatrixDiagonalization diag_;
-	cout << "testeando diagonalizacao" << endl;
-	std::vector< std::vector<double> > entry(4);
-	entry[0].resize(4);
-	entry[0][0] = 33.6572;
-	entry[0][1] = 6.3027;
-	entry[0][2] = -8.5226;
-	entry[0][3] = -7.4427;
-	entry[1].resize(4);
-	entry[1][0] = entry[0][1];
-	entry[1][1] = 15.3273;
-	entry[1][2] = -1.9941;
-	entry[1][3] = -13.6728;
-	entry[2].resize(4);
-	entry[2][0] = entry[0][2];
-	entry[2][1] = entry[1][2];
-	entry[2][2] = 18.2071;
-	entry[2][3] = 6.1761;
-	entry[3].resize(4);
-	entry[3][0] = entry[0][3];
-	entry[3][1] = entry[1][3];
-	entry[3][2] = entry[2][3];
-	entry[3][3] = 35.5738;
-	diag_.diagonalization(entry,0,4);
-
-	cout << "diagonalizou " << endl;
-
-	std::vector< std::vector<double> > eigenVec = diag_.getEigenvectors();
-	for(size_t i = 0; i < 4; i++)
-	{
-		for(size_t j = 0; j < 4; j++)
-		{
-			cout << eigenVec[i][j] << "  ";
-
-
-		}
-		cout << endl;
-	}
-	cout << "values" << endl;
-	for(size_t i = 0; i < 4; i++)
-		cout << diag_.getEigenvalueI(i) << "  ";
-
-
-	
-	cout << "did it" << endl;
-	return 0;
-
-	*/
 	string qinputName;
 	if (argc == 1)
 		qinputName = "qinput.txt";
@@ -105,7 +55,8 @@ int main(int argc, char *argv[])
 
 	/* fredmudar - testes pontuais	
 	scf_.startScfProcedure(&mol, &printLog_);
-	scf_.doScfProcedure(readQ_.getCoordinates());
+	std::vector<double> coord0 = readQ_.getCoordinates();
+	scf_.doScfProcedure(coord0);
 	cout << "PARAMETERIZATION DESACTIVATED CHECK SOURCE CODE" << endl;
 	exit(1);
 	*/

@@ -3,8 +3,8 @@
                      SUMMARY OF RM1 CALCULATION, Site No: 6211
 
                                                        MOPAC2016 (Version: 17.173L)
-                                                       Thu Mar  8 09:48:03 2018
-                                                       No. of days remaining = 106
+                                                       Wed Mar 28 14:09:44 2018
+                                                       No. of days remaining =  86
 
            Empirical Formula: H4  =     4 atoms
 
@@ -40,7 +40,7 @@ RM1 1SCF UHF CHARGE=1
             H     4    H     1     0.00000
             H     1    H     2     0.00000
           SCF CALCULATIONS        =          1
-          WALL-CLOCK TIME         =          0.020 SECONDS
+          WALL-CLOCK TIME         =          0.285 SECONDS
           COMPUTATION TIME        =          0.020 SECONDS
 
 

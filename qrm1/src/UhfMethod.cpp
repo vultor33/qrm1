@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
+#include <stdlib.h>
 
 #include "Molecule.h"
 #include "Params.h"
@@ -34,6 +35,7 @@ void UhfMethod::startUhfFockMatrix(int fock_matrix_size,
 		alphaElectrons = num_electrons / 2;
 		betaElectrons = num_electrons / 2;
 	}
+
 
 	diagonalizationMethod = 0;
 
@@ -313,7 +315,7 @@ void UhfMethod::build_first_density_matrix()
 //		chargeWeight = pMol->number_of_electrons / (pMol->number_of_electrons - charge);
 	
 	double alphaFraction = (double)alphaElectrons / ((double)num_electrons);
-	double betaFraction = (double)alphaElectrons / ((double)num_electrons);
+	double betaFraction = (double)betaElectrons / ((double)num_electrons);
 
 	int j_base = 0;
 	for (int i = 0; i < fockMatrixSize; i++)

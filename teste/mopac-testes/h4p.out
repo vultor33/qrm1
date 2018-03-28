@@ -2,7 +2,7 @@
  ** Site#: 6211         For non-commercial use only    Version 17.173L 64BITS **
  *******************************************************************************
  ** Cite this program as: MOPAC2016, Version: 17.173L, James J. P. Stewart,   **
- ** Stewart Computational Chemistry, web: HTTP://OpenMOPAC.net. Days left: 106**
+ ** Stewart Computational Chemistry, web: HTTP://OpenMOPAC.net. Days left:  86**
  *******************************************************************************
  **                                                                           **
  **                                MOPAC2016                                  **
@@ -13,7 +13,7 @@
 
 
  *******************************************************************************
- *  CALCULATION DONE:                                Thu Mar  8 09:48:03 2018  *
+ *  CALCULATION DONE:                                Wed Mar 28 14:09:44 2018  *
  *  RM1        - The RM1 Hamiltonian to be used
  *  UHF        - UNRESTRICTED HARTREE-FOCK CALCULATION
  *
@@ -73,8 +73,8 @@ RM1 1SCF UHF CHARGE=1
 
                               RM1 CALCULATION
                                                        MOPAC2016 (Version: 17.173L)
-                                                       Thu Mar  8 09:48:03 2018
-                                                       No. of days remaining = 106
+                                                       Wed Mar 28 14:09:44 2018
+                                                       No. of days remaining =  86
 
 
 
@@ -105,8 +105,8 @@ RM1 1SCF UHF CHARGE=1
 
           SCF CALCULATIONS        =          1
  
-          WALL-CLOCK TIME         =          0.016 SECONDS
-          COMPUTATION TIME        =          0.016 SECONDS
+          WALL-CLOCK TIME         =          0.285 SECONDS
+          COMPUTATION TIME        =          0.020 SECONDS
 
 
 
@@ -185,6 +185,6 @@ RM1 1SCF UHF CHARGE=1
 
 
 
- TOTAL JOB TIME:             0.03 SECONDS
+ TOTAL JOB TIME:             0.53 SECONDS
 
  == MOPAC DONE ==
