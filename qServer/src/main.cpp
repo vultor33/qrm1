@@ -347,7 +347,7 @@ int main()
 		}
 
 		// serial run
-		for(size_t i = 0; i < 5; i++)
+		for(size_t i = 0; i < nhydrogens; i++)
 			chooseRunMethod(0,i);
 
 		/*
