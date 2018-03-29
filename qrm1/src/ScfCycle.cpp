@@ -167,11 +167,13 @@ double ScfCycle::core_core_repulsion()
 				(!isExchange)
 				)
 			{
+
 				if((qalfa < 1) && 
 				  (  (alfA*RAB >= 1/(1-qalfa)) || (alfB*RAB >= 1/(1-qalfa))  ))
 					expalfa = 0.0e0;
 				else
 					expalfa = expq((-alfA*RAB), qalfa) + expq((-alfB*RAB), qalfa);
+
 			}	
 			else
 			{

@@ -278,6 +278,7 @@ double DiatomicOverlaps::overlap_1s_1s(const Molecule &mol, int A, int B)
 	// so tem um tipo de integral 1s1s, e a entre hidrogenios
 	double ro_expoente = Params::get_double(mol.atom_name[A], "expoents") * mol.distancia_i_j[A][B];
 
+
 	double q = Params::get_double(mol.atom_name[A], "qover");
 	double overlap;
 	if (
@@ -294,10 +295,6 @@ double DiatomicOverlaps::overlap_1s_1s(const Molecule &mol, int A, int B)
 			overlap = pow(1.0e0 - (1.0e0 - q)*ro_expoente, 1.0e0 / (1.0e0 - q))
 			*(1.0e0 + ro_expoente + ro_expoente*ro_expoente / (3.0e0));
 		}
-	}
-	else if(Params::method == "gaussRM1")
-	{
-		overlap = exp(-ro_expoente * ro_expoente);
 	}
 	else
 	{

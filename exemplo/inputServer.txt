@@ -9,9 +9,9 @@ restart: 0 para recomecar - 1 para calcular todos os pontos
 modelo:  
 	0 - rm1
 	1 - qover
-	2 - qint
-	3 - qoverqint
-	4 - qalfa
+	2 - qmono
+	3 - qalfa
+	4 - qgauss
 	5 - qoverqalfa
 	6 - qover - so zeta e q para 5 clusters
 	7 - qover - so zeta e q para 9 clusters

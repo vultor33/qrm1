@@ -1,9 +1,8 @@
 ATENCAO
 
 -> ANTES DE PARAMETRIZAR
-   - fazer testes com a otimizacao.
-   - fazer testes com os q's, pequenas modificacoes de energia.
-   - otimizar uma vez com o q.
+   - o qoverlap tem que ser menor do que 1 - so pra lembrar o simplex se vira.
+   - os demais precisam ser maiores do que 1
 
 -> OS EXECUTAVEIS SAO IGNORADOS, ENTAO QUANDO TROCAR DE BRANCH
    TEM QUE COMPILAR DE NOVO.
@@ -21,11 +20,10 @@ charge:  0
 scftype:  1  
 debuglevel:  2
 printexcell:  0
-H
-H   
-0
-0
-0... um tanto de zero. era para estar relacionado a coordendas.
+H 0 0 0
+H 1 0 0
+
+... formato xyz
 ]
 
 hparam.txt

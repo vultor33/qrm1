@@ -207,17 +207,17 @@ bool qmodel()
 			break;
 
 		case 3:
-			hparam_ << setprecision(16) << points[8] << endl;
-			hparam_ << setprecision(16) << points[9] << endl;
 			hparam_ << 1.0e0 << endl;
+			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[8] << endl;
 			hparam_ << 1.0e0 << endl;
 			break;
 
 		case 4:
 			hparam_ << 1.0e0 << endl;
 			hparam_ << 1.0e0 << endl;
-			hparam_ << setprecision(16) << points[8] << endl;
 			hparam_ << 1.0e0 << endl;
+			hparam_ << setprecision(16) << points[8] << endl;
 			break;
 
 		case 5:
