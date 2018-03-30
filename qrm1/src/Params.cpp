@@ -468,7 +468,7 @@ void Params::set_rm1_H_parameters()
 	double_parameters[0][28] = 0.0e0; //ro_2
 	double_parameters[0][29] = 1.0e0; // q - overlap
 	double_parameters[0][30] = 1.0e0; // q - mono
-	double_parameters[0][31] = 1.3e0; // q - alfa
+	double_parameters[0][31] = 1.0e0; // q - alfa
 	double_parameters[0][32] = 1.0e0; // q - gauss
 	double_parameters[0][33] = 0.0e0; // integral - q - R==0
 	double_parameters[0][34] = 0.0e0; // integral - q - R==inf

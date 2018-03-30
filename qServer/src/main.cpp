@@ -103,6 +103,7 @@ void chooseRunMethod(int way, int i)
 	case 6:
 	case 7:
 	case 8:
+		cout << "system;  " << getSystem(i) << endl;
 		run = "./qRM1.exe " + getSystem(i);
 		system(run.c_str());
 		break;

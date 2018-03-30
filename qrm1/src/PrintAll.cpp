@@ -102,9 +102,23 @@ void PrintAll::prinParameters()
 		<< "qover:  " << Params::get_double("H", "qover") << endl
 		<< "qmono:  " << Params::get_double("H", "qmono") << endl
 		<< "qalfa:  " << Params::get_double("H", "qalfa") << endl
-		<< "qgauss:  " << Params::get_double("H", "qgauss") << endl
-		<< endl << endl;
-
+		<< "qgauss:  " << Params::get_double("H", "qgauss") << endl;
+	if((Params::method == "RM1-2g") || (Params::method == "qRM1-2g"))
+	{
+		logOutput_ << "a2core:  " << Params::get_double("H", "a2core") << endl
+		<< "b2core:  " << Params::get_double("H", "b2core") << endl
+		<< "c2core:  " << Params::get_double("H", "c2core") << endl;
+	}
+	else if((Params::method == "RM1-3g") || (Params::method == "qRM1-3g"))
+	{
+		logOutput_ << "a2core:  " << Params::get_double("H", "a2core") << endl
+		<< "b2core:  " << Params::get_double("H", "b2core") << endl
+		<< "c2core:  " << Params::get_double("H", "c2core") << endl
+		<< "a3core:  " << Params::get_double("H", "a3core") << endl
+		<< "b3core:  " << Params::get_double("H", "b3core") << endl
+		<< "c3core:  " << Params::get_double("H", "c3core") << endl;
+	}
+	logOutput_ << endl << endl;
 
 }
 
